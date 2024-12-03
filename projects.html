@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects | Aditya Tanwani</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" integrity="sha512-9xKTRVabjVeZmc+GUW8GgSmcREDunMM+Dt/GrzchfN8tkwHizc5RP4Ok/MXFFy5rIjJjzhndFScTceq5e6GvVQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+     .navbar {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  padding: 10px 20px;
+  background: linear-gradient(to right, #243b55, #141e30);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.navbar .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar .nav-links li {
+  display: inline-block;
+}
+
+.navbar .nav-links a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 25px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.navbar .nav-links a:hover {
+  background: #ffd700;
+  color: #000;
+}
+
+.navbar .toggle-menu {
+  display: none;
+}
+
+
+    /* Responsive Navbar */
+    @media (max-width: 768px) {
+      .navbar .nav-links {
+        flex-direction: column;
+        gap: 10px;
+        background: linear-gradient(to bottom, #243b55, #141e30);
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        width: 200px;
+        border-radius: 10px;
+        display: none;
+      }
+      .navbar .nav-links.show {
+        display: flex;
+      }
+      .navbar .toggle-menu {
+        display: block;
+        font-size: 1.5rem;
+        color: #fff;
+        cursor: pointer;
+      }
+    }
+    @media (min-width: 769px) {
+      .navbar .toggle-menu {
+        display: none;
+      }
+    }
+    /* General Styles */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+      color: #fff;
+      overflow-x: hidden;
+    }
+    h1, h2, p {
+      text-align: center;
+      margin: 0 auto;
+    }
+    h1 {
+      margin-top: 50px;
+      font-size: 2.5rem;
+      color: #ffd700;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+      animation: glow 2s infinite alternate;
+    }
+    p {
+      margin-top: 10px;
+      font-size: 1rem;
+      color: #ccc;
+    }
+    .projects-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 50px;
+      width: 90%;
+      margin: 0 auto;
+    }
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: #111;
+    }
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+    }
+    .project-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    .project-card:hover img {
+      transform: scale(1.1);
+    }
+    .project-info {
+      padding: 20px;
+      text-align: center;
+      background: linear-gradient(to bottom, #222, #333);
+    }
+    .project-info h2 {
+      font-size: 1.5rem;
+      color: #ffd700;
+      margin-bottom: 10px;
+    }
+    .project-info p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .view-more {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      background: linear-gradient(to right, #ffd700, #ff8c00);
+      padding: 10px 20px;
+      border-radius: 50px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: inline-block;
+      margin-top: 15px;
+      position: relative;
+    }
+    .view-more:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 10px rgba(255, 215, 0, 0.6);
+    }
+    .view-more::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 0.8rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .view-more:hover::after {
+      opacity: 1;
+    }
+
+    /* Video Section */
+    .video-section {
+      text-align: center;
+      margin: 50px auto;
+    }
+    .video-section h2 {
+      font-size: 2rem;
+      color: #ffd700;
+      margin-bottom: 10px;
+    }
+    .video-section p {
+      font-size: 1rem;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+    .video-container {
+      width: 1000px;
+      height: 500px;
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      background: #000;
+    }
+    .video-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Back to Home Button */
+    .back-home {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      background: linear-gradient(to right, #243b55, #141e30);
+      padding: 10px 20px;
+      border-radius: 50px;
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      z-index: 1000;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .back-home:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+  </style>
+</head>
+<body>
+    <!-- Navbar -->
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="Home.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="toggle-menu"><i class="fas fa-bars"></i></div>
+  </nav>
+  <header>
+    <h1>My Projects</h1>
+    <p>Explore the projects that showcase my skills and creativity.</p>
+  </header>
+
+  <section class="projects-container">
+    <!-- Project 1 -->
+    <div class="project-card">
+        <img src="images/Screenshot 2024-11-24 131155.png" alt="Admin Dashboard">
+        <div class="project-info">
+          <h2>Admin Dashboard</h2>
+          <p>Built using JavaScript and JSON for interactive data visualization and management.</p>
+          <a href="https://js-project-lac-tau.vercel.app/" target="_blank" class="view-more">View More</a>
+        </div>
+      </div>
+  
+      <!-- Project 2 -->
+      <div class="project-card">
+        <img src="images/Screenshot 2024-11-24 134424.png" alt="Make My Event">
+        <div class="project-info">
+          <h2>Event Management Website</h2>
+          <p>A React-based platform to manage and book events seamlessly.</p>
+          <a href="https://reactproject-2-8hbq.vercel.app/" target="_blank" class="view-more">View More</a>
+        </div>
+      </div>
+  
+      <!-- Project 3 -->
+      <div class="project-card">
+        <img src="images/java.jpg" alt="Java Queue">
+        <div class="project-info">
+          <h2>Music Gallery</h2>
+          <p>A Music Queue Gallery built using Java data structures.</p>
+          <a href="#" target="_blank" class="view-more">View More</a>
+        </div>
+      </div>
+  
+      <!-- Project 4 -->
+      <div class="project-card">
+        <img src="images/sql.jpg" alt="SQL Certification">
+        <div class="project-info">
+          <h2>SQL Certification</h2>
+          <p>Certified in SQL from HackerRank for advanced database management skills.</p>
+        </div>
+      </div>
+      <!-- Project 5 -->
+      <div class="project-card">
+        <img src="images/Screenshot 2024-11-24 151633.png" alt="Admin Dashboard">
+        <div class="project-info">
+          <h2>Aspire Timepieces</h2>
+          <p>Watches Website made using html And Css</p>
+          <a href="http://127.0.0.1:5501/home.html" target="_blank" class="view-more">View More</a>
+        </div>
+        
+      </div>
+  
+  
+     
+  </section>
+<!-- Project 6 Major Project 1 -->
+  <section class="video-section">
+    <h2>Asthetic Shoes</h2>
+    <p>A react based interactive E-Commerce website for purchasing shoes,Add to Cart Functionality,Proceed to Checkout,Payment Gateway</p>
+    <div class="video-container">
+      <video controls muted>
+        <source src="20241124-0827-59.6445743.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </section>
+
+  <a href="Home.html" class="back-home">⬅ Back to Home</a>
+</body>
+</html>
